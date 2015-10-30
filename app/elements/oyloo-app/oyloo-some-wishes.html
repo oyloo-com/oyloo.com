@@ -1,0 +1,39 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="oyloo-some-wishes">
+    <template>
+        <style>
+      
+        </style>
+        <template is="dom-repeat" items="{{items}}">
+            <paper-material elevation="1">
+                <p class="paper-font-body2">{{item}}</p>
+            </paper-material>
+        </template>
+    </template>
+    <script>
+        (function() {
+            'use strict';
+
+            Polymer({
+                is: 'oyloo-some-wishes',
+                properties: {
+                    items: {
+                        type: Array,
+                        notify: true,
+                    }
+                },
+                ready: function() {
+                    this.items = [
+                        'Responsive Web App boilerplate',
+                        'Iron Elements and Paper Elements',
+                        'End-to-end Build Tooling (including Vulcanize)',
+                        'Unit testing with Web Component Tester',
+                        'Routing with Page.js',
+                        'Offline support with the Platinum Service Worker Elements'
+                    ];
+                }
+            });
+        })();
+    </script>
+</dom-module>
