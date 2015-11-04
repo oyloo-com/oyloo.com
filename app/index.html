@@ -68,8 +68,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-scroll-header-panel drawer fixed>
 
         <!-- Drawer Toolbar -->
-        <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title">Menu</span>
+          <paper-toolbar id="drawerToolbar" class="medium-tall">
+            <div class="paper-font-title">[[userName]]</div>
+            <google-signin class="middle"
+                client-id="1011876494951-bh5hesiig8bv4ira6rljlr7im9d9abka.apps.googleusercontent.com"
+                on-google-signin-success="handleSignIn"
+                on-google-signed-out="handleSignOut">
+            </google-signin>
         </paper-toolbar>
 
         <!-- Drawer Content -->
