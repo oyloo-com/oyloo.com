@@ -83,12 +83,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   app.handleSignIn = function() {
     this.status = 'Signin granted';
     //console.log('[App] Signin Response', response);
-    this.userName = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName();
+    this.userName = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile()
+      .getName();
   };
   app.handleSignOut = function() {
     this.status = 'Signed out';
     //console.log('[App] Signout Response', response);
     this.userName = '';
   };
-    
+  app.signIn = function() {
+    this.$.google.signIn();
+  };
+
 })(document);

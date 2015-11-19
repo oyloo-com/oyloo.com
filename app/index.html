@@ -70,7 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <!-- Drawer Toolbar -->
           <paper-toolbar id="drawerToolbar" class="medium-tall">
             <div class="paper-font-title">[[userName]]</div>
-            <google-signin class="middle"
+            <google-signin id="google" class="middle"
                 client-id="1011876494951-bh5hesiig8bv4ira6rljlr7im9d9abka.apps.googleusercontent.com"
                 on-google-signin-success="handleSignIn"
                 on-google-signed-out="handleSignOut">
@@ -124,7 +124,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="content">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <oyloo-some-wishes data-route="home">
+            <oyloo-some-wishes data-route="home" on-vote="signIn">
             </oyloo-some-wishes>
 
             <section data-route="users">

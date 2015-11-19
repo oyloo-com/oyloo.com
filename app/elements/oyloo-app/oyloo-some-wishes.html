@@ -38,8 +38,8 @@
     </firebase-collection>
     <template is="dom-repeat" items="{{items}}">
       <paper-material elevation="1">
-          <p class="paper-font-body2">{{item.n}}</p>
-          <paper-button>VOTE</paper-button>
+        <p class="paper-font-body2">{{item.n}}</p>
+        <paper-button on-tap="_onVote">VOTE</paper-button>
       </paper-material>
     </template>
   </template>
@@ -54,6 +54,9 @@
             type: Array,
             notify: true,
           }
+        },
+        _onVote: function() {
+          this.fire('vote');
         }
       });
     })();
