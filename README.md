@@ -241,7 +241,7 @@ to correctly build. We are still investigating this, however for the time-being 
 you find your builds getting stuck here.
 
 
-### How do I add new JavaScript files to Starter Kit so they're picked up by the build process?
+### How do I add new JavaScript files to Oyloo so they're picked up by the build process?
 
 At the bottom of `app/index.html`, you will find a build block that can be used to include additional
 scripts for your app. Build blocks are just normal script tags that are wrapped in a HTML
@@ -271,4 +271,4 @@ Oyloo includes Oyloo license headers at the top of several of our source files. 
 
 ## Contributing
 
-Oylee a new project. We welcome your bug reports, PRs for improvements, docs and anything you think would improve the experience for other Oyloo developers.
+Oyloo a new project. We welcome your bug reports, PRs for improvements, docs and anything you think would improve the experience for other Oyloo developers.
