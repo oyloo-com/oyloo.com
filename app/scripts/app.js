@@ -15,6 +15,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
 
+  // Sets app default base URL
+  app.baseUrl = '/';
+  if (window.location.port === '') {  // if production
+    // Uncomment app.baseURL below and
+    // set app.baseURL to '/your-pathname/' if running from folder in production
+    // app.baseUrl = '/polymer-starter-kit/';
+  }
+
   app.displayInstalledToast = function() {
     // Check to make sure caching is actually enabled—it won't be in the dev environment.
     if (!Polymer.dom(document).querySelector('platinum-sw-cache').disabled) {
@@ -47,9 +55,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var detail = e.detail;
     var heightDiff = detail.height - detail.condensedHeight;
     var yRatio = Math.min(1, detail.y / heightDiff);
-    var maxMiddleScale = 0.50; // appName max size when condensed. The smaller the number the smaller the condensed size.
-    var scaleMiddle = Math.max(maxMiddleScale, (heightDiff - detail.y) /
-      (heightDiff / (1 - maxMiddleScale)) + maxMiddleScale);
+    // appName max size when condensed. The smaller the number the smaller the condensed size.
+    var maxMiddleScale = 0.50;
+    var auxHeight = heightDiff - detail.y;
+    var auxScale = heightDiff / (1 - maxMiddleScale);
+    var scaleMiddle = Math.max(maxMiddleScale, auxHeight / auxScale + maxMiddleScale);
     var scaleBottom = 1 - yRatio;
 
     // Move/translate middleContainer
@@ -64,15 +74,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)',
       appName);
   });
-
-  // Close drawer after menu item is selected if drawerPanel is narrow
-  app.onDataRouteClick = function() {
-    var drawerPanel = Polymer.dom(document).querySelector(
-      '#paperDrawerPanel');
-    if (drawerPanel.narrow) {
-      drawerPanel.closeDrawer();
-    }
-  };
 
   // Scroll page to top and expand header
   app.scrollPageToTop = function() {
@@ -95,6 +96,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     if (!this.$.google.signedIn) {
       this.$.google.signIn();
     }
+  app.closeDrawer = function() {
+    app.$.paperDrawerPanel.closeDrawer();
   };
 
 })(document);
