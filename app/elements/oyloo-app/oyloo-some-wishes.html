@@ -37,8 +37,8 @@
     data="{{items}}">
     </firebase-collection>
     <template is="dom-repeat" items="{{items}}">
-      <paper-material elevation="1">
-        <p class="paper-font-body2">{{item.n}}</p>
+        <paper-material elevation="1" itemscope itemtype="http://schema.org/Thing">
+        <p class="paper-font-body2" itemprop="name">{{item.n}}</p>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_donations">
           <input type="hidden" name="business" value="PWZEW9G7YHF9C">
