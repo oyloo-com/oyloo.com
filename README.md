@@ -1,3 +1,4 @@
+![](https://raw.githubusercontent.com/Oyloo/oyloo/master/app/images/oyloo-logo.png)
 ## Oyloo
 > Crowd fulfill needs
 
