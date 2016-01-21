@@ -35,6 +35,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // Routes
     page('*', scrollToTop, closeDrawer, function(ctx, next) {
       next();
+      ga('send', 'pageview', ctx.path);
     });
 
     page('/', function() {
@@ -45,12 +46,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'home';
     });
 
-    page('/ideas', function() {
-      app.route = 'ideas';
+    page('/requests', function() {
+      app.route = 'requests';
     });
 
-    page('/ideas/:id', function(data) {
-      app.route = 'idea-info';
+    page('/request/:id', function(data) {
+      app.route = 'request-info';
       app.params = data.params;
     });
 

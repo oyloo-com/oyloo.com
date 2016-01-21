@@ -18,22 +18,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="generator" content="Oyloo" />
   <title>Oyloo</title>
   <script>
-    (function(i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js',
-      'ga');
-
+    window.ga = window.ga || function() {
+      (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date;
     ga('create', 'UA-72359630-1', 'auto');
-    ga('send', 'pageview');
   </script>
+  <script async src='//www.google-analytics.com/analytics.js'></script>
   <!-- Place favicon.ico in the `app/` directory -->
 
   <!-- Chrome for Android theme color -->
@@ -84,8 +75,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-scroll-header-panel drawer fixed>
 
         <!-- Drawer Toolbar -->
-        <paper-toolbar id="drawerToolbar" class="tall">
-          <paper-button class="bottom fit">Sign in</paper-button>
+        <paper-toolbar id="drawerToolbar">
+          <span class="menu-name">Menu</span>
         </paper-toolbar>
 
         <!-- Drawer Content -->
@@ -95,9 +86,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Home</span>
           </a>
 
-          <a data-route="ideas" href="{{baseUrl}}ideas">
+          <a data-route="requests" href="{{baseUrl}}requests">
             <iron-icon icon="info"></iron-icon>
-            <span>Ideas</span>
+            <span>Requests</span>
           </a>
 
           <a data-route="contact" href="{{baseUrl}}contact">
@@ -124,7 +115,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <!-- Application sub title -->
           <div class="bottom bottom-container">
-            <div class="bottom-title paper-font-subhead">Leanest Crowd Startups</div>
+            <div class="bottom-title paper-font-subhead">Leanest Crowd Startup</div>
           </div>
         </paper-toolbar>
 
@@ -132,38 +123,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="content">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <section data-route="home">
-              <paper-material elevation="1">
-                <p>Hi, my name is <b>Ed Ilyin</b>. I'm 37 and father to 9, 2 and 1 years old boys.</p>
-                <p>Do you want to make a <b>startup</b> but have <b>no spare money and time</b> like me?</p>
-                <p>Let's build best services in the world and <b>earn money</b> all together.</p>
-              </paper-material>
-              <paper-material elevation="1">
-                <h2 class="page-title">How?</h2>
-                  <li>We (me, you and others), will generate <b>ideas</b>, features or changes for this and/or another service/product (so far send them to <a href="sendto:ideas@oyloo.com">ideas@oyloo.com</a>).</li>
-                <li>Donate <b>1 cent</b> as vote on your favorite changes.</li>
-                <li><b>Developers will do the changes</b> in order starting from the most voted. (PR's (pull requests) on <a href="https://github.com/Oyloo/oyloo">GitHub</a> are welcome.)</li>
-                <li><b>Profit</b> will be devided between voters proportionally to their investment.</li>
-              </paper-material>
-            </section>
+            <oyloo-landing-page data-route="home">
+            </oyloo-landing-page>
 
-            <oyloo-some-wishes data-route="ideas" on-vote="signIn">
+            <oyloo-some-wishes data-route="requests">
             </oyloo-some-wishes>
 
-            <section data-route="idea-info">
+            <section data-route="request-info">
               <paper-material elevation="1">
-                <h2 class="page-title">Idea: {{params.id}}</h2>
+                <h2 class="page-title">Request: {{params.id}}</h2>
                 <div>This is {{params.id}}'s section</div>
               </paper-material>
             </section>
 
-            <section data-route="contact">
-              <paper-material elevation="1">
-                <h2 class="page-title">Contact</h2>
-                <p>It is just begining.</p>
-                <p>I would love to hear anything from you: <a href="mailto:feedback@oyloo.com">feedback@oyloo.com</a></p>
-              </paper-material>
-            </section>
+            <oyloo-contact data-route="contact">
+            </oyloo-contact>
           </iron-pages>
         </div>
       </paper-scroll-header-panel>
