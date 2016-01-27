@@ -1,4 +1,4 @@
-![Alt text](app/images/oyloo-logo.png?raw=true "Oyloo.com")
+![Alt text](app/images/touch/chrome-touch-icon-192x192.png?raw=true "Oyloo.com")
 ## Oyloo
 > Crowd fulfill needs
 
