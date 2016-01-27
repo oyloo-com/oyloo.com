@@ -1,5 +1,5 @@
-![Alt text](app/images/touch/chrome-touch-icon-192x192.png?raw=true "Oyloo.com")
-## Oyloo
+![Alt text](app/images/touch/chrome-touch-icon-192x192.png?raw=true "oyloo.com")
+## oyloo.com
 > Crowd fulfill needs
 
 ## Getting Started
