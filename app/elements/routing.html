@@ -36,6 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     page('*', scrollToTop, closeDrawer, function(ctx, next) {
       next();
       ga('send', 'pageview', ctx.path);
+      mixpanel.track(ctx.pathname);
     });
 
     page('/', function() {
