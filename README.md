@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/Oyloo/oyloo/master/app/images/oyloo-logo.png)
+![Alt text](app/images/oyloo-logo.png?raw=true "Oyloo.com")
 ## Oyloo
 > Crowd fulfill needs
 
