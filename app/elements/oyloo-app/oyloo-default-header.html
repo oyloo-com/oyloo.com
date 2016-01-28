@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="oyloo-default-header">
+  <template>
+      <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar" class="tall">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+
+          <span class="space"></span>
+
+          <!-- Toolbar icons -->
+          <iron-icon src="images/oyloo.svg"></iron-icon>
+
+          <!-- Application name -->
+          <div class="middle middle-container">
+            <div class="app-name">[[name]]</div>
+          </div>
+
+          <!-- Application sub title -->
+          <div class="bottom bottom-container">
+            <div class="bottom-title paper-font-subhead">[[title]]</div>
+          </div>
+        </paper-toolbar>
+
+        <!-- Main Content -->
+        <content class="content">
+        </content>
+      </paper-scroll-header-panel>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'oyloo-default-header',
+
+        properies: {
+          title: String,
+          name: String
+        }
+      });
+    })();
+  </script>
+</dom-module>
