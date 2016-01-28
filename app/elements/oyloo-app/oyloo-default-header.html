@@ -109,6 +109,16 @@
           name: {
             type: String,
             value: 'Oyloo'
+          },
+          selected: {
+            type: Boolean,
+            observer: 'scrollToTop'
+          }
+        },
+
+        scrollToTop: function(selected) {
+          if(selected) {
+            this.$.headerPanelMain.scrollToTop(true);
           }
         },
 
@@ -118,8 +128,10 @@
         // is shrunk to nothing on condensing.
         transformHeader: function(e) {
           var appName = this.$$('#mainToolbar .app-name');
-          var middleContainer = this.$$('#mainToolbar .middle-container');
-          var bottomContainer = this.$$('#mainToolbar .bottom-container');
+          var middleContainer = this.$$(
+            '#mainToolbar .middle-container');
+          var bottomContainer = this.$$(
+            '#mainToolbar .bottom-container');
           var detail = e.detail;
           var heightDiff = detail.height - detail.condensedHeight;
           var yRatio = Math.min(1, detail.y / heightDiff);
