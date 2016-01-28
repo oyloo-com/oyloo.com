@@ -179,49 +179,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </paper-scroll-header-panel>
 
       <!-- Main Area -->
-      <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
-        <!-- Main Toolbar -->
-        <paper-toolbar id="mainToolbar" class="tall">
+      <iron-pages main attr-for-selected="data-route" selected="{{route}}">
+
+        <oyloo-default-header data-route="home">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <oyloo-landing-page></oyloo-landing-page>
+        </oyloo-default-header>
 
-          <span class="space"></span>
+        <oyloo-default-header data-route="demo" title="[[title]]" name="[[name]]">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <oyloo-demo title="{{title}}" name="{{name}}"></oyloo-demo>
+        </oyloo-default-header>
 
-          <!-- Toolbar icons -->
-          <iron-icon src="images/oyloo.svg"></iron-icon>
+        <oyloo-default-header data-route="contact">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <oyloo-contact></oyloo-contact>
+        </oyloo-default-header>
 
-          <!-- Application name -->
-          <div class="middle middle-container">
-            <div class="app-name">[[name]]</div>
-          </div>
-
-          <!-- Application sub title -->
-          <div class="bottom bottom-container">
-            <div class="bottom-title paper-font-subhead">[[title]]</div>
-          </div>
-        </paper-toolbar>
-
-        <!-- Main Content -->
-        <div class="content">
-          <iron-pages attr-for-selected="data-route" selected="{{route}}">
-
-            <oyloo-landing-page data-route="home">
-            </oyloo-landing-page>
-
-            <oyloo-demo data-route="demo" title="{{title}}" name="{{name}}">
-            </oyloo-demo>
-
-            <section data-route="request-info">
-              <paper-material elevation="1">
-                <h2 class="page-title">Request: {{params.id}}</h2>
-                <div>This is {{params.id}}'s section</div>
-              </paper-material>
-            </section>
-
-            <oyloo-contact data-route="contact">
-            </oyloo-contact>
-          </iron-pages>
-        </div>
-      </paper-scroll-header-panel>
+      </iron-pages>
     </paper-drawer-panel>
 
     <paper-toast id="toast">
@@ -252,47 +227,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
 
-  <!--
-  <script>
-    window.intercomSettings = {
-      app_id: "bkoippy4"
-    };
-  </script>
-  <script>
-    (function() {
-      var w = window;
-      var ic = w.Intercom;
-      if (typeof ic === "function") {
-        ic('reattach_activator');
-        ic('update', intercomSettings);
-      } else {
-        var d = document;
-        var i = function() {
-          i.c(arguments)
-        };
-        i.q = [];
-        i.c = function(args) {
-          i.q.push(args)
-        };
-        w.Intercom = i;
-
-        function l() {
-          var s = d.createElement('script');
-          s.type = 'text/javascript';
-          s.async = true;
-          s.src = 'https://widget.intercom.io/widget/bkoippy4';
-          var x = d.getElementsByTagName('script')[0];
-          x.parentNode.insertBefore(s, x);
-        }
-        if (w.attachEvent) {
-          w.attachEvent('onload', l);
-        } else {
-          w.addEventListener('load', l, false);
-        }
-      }
-    })()
-  </script>
-  -->
 </body>
 
 </html>

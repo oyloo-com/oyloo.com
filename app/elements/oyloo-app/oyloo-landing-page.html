@@ -3,6 +3,14 @@
 <dom-module id="oyloo-landing-page">
   <style>
     paper-material {
+      @apply(--paper-font-body2);
+    }
+    
+    paper-material .subhead {
+      @apply(--paper-font-subhead);
+    }
+    
+    paper-material {
       border-radius: 2px;
       height: 100%;
       padding: 16px 0 16px 0;
@@ -49,10 +57,12 @@
       <h2 class="page-title">How?</h2>
       <ol>
         <li>You donate <b>1 cent</b> as a vote for your prefered <a href="{{baseUrl}}demo">request</a>.
-          (Send new requests to <a href="mailto:request@oyloo.com">request@oyloo.com</a>.)</li><br>
-        <li><b>I will make the requested changes</b> starting from the <b>most voted</b>. (PR's
-          (pull requests) on <a href="https://github.com/Oyloo/oyloo">GitHub</a>          are welcome.)
-        </li><br>
+          (Send new requests to <a href="mailto:request@oyloo.com">request@oyloo.com</a>.)</li>
+        <br>
+        <li><b>I will make the requested changes</b> starting from the <b>most voted</b>.
+          (PR's (pull requests) on <a href="https://github.com/Oyloo/oyloo">GitHub</a>          are welcome.)
+        </li>
+        <br>
         <li>As a result <b>you become co-owner</b> of a service and any <b>profit will be shared with you</b>          proportionally to the amount of your donations.
         </li>
       </ol>
