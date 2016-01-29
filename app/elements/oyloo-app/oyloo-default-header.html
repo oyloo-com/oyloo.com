@@ -108,12 +108,17 @@
           },
           name: {
             type: String,
-            value: 'Oyloo'
+            value: 'Oyloo',
+            observer: 'nameChanged'
           },
           selected: {
             type: Boolean,
             observer: 'scrollToTop'
           }
+        },
+
+        nameChanged: function(val) {
+          this.fire('name-changed');
         },
 
         scrollToTop: function(selected) {

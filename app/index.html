@@ -179,14 +179,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </paper-scroll-header-panel>
 
       <!-- Main Area -->
-      <iron-pages main attr-for-selected="data-route" selected="{{route}}" selected-attribute="selected">
+      <iron-pages id="pages" main attr-for-selected="data-route" selected="{{route}}" selected-attribute="selected" on-iron-select="updateTitle">
 
         <oyloo-default-header data-route="home">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
           <oyloo-landing-page></oyloo-landing-page>
         </oyloo-default-header>
 
-        <oyloo-default-header data-route="demo" title="[[title]]" name="[[name]]">
+        <oyloo-default-header data-route="demo" title="[[title]]" name="{{name}}" on-name-changed="updateTitle">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
           <oyloo-demo title="{{title}}" name="{{name}}"></oyloo-demo>
         </oyloo-default-header>
