@@ -2,7 +2,7 @@
 
 <dom-module id="oyloo-default-header">
   <style>
-    .space {
+      .space {
       @apply(--layout-flex);
     }
     
@@ -46,22 +46,21 @@
     .content {
       height: 900px;
     }
+    
     /* Breakpoints */
-    /* Small */
-    
-    @media (max-width: 600px) {
-      #mainToolbar.tall .app-name {
-        font-size: 24px;
-        font-weight: 400;
+      /* Small */
+      @media (max-width: 600px) {
+        #mainToolbar.tall .app-name {
+          font-size: 24px;
+          font-weight: 400;
+        }
       }
-    }
-    /* Tablet+ */
-    
-    @media (min-width: 601px) {
-      .page {
-        padding: 48px 62px;
+      /* Tablet+ */
+      @media (min-width: 601px) {
+        .page {
+          padding: 48px 62px;
+        }
       }
-    }
   </style>
   <template>
     <paper-scroll-header-panel id="headerPanelMain" condenses keep-condensed-header on-paper-header-transform="transformHeader">
@@ -122,7 +121,7 @@
         },
 
         scrollToTop: function(selected) {
-          if(selected) {
+          if (selected) {
             this.$.headerPanelMain.scrollToTop(true);
           }
         },

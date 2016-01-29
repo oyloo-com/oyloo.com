@@ -1,47 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="oyloo-demo">
-  <style>
-    paper-material {
-      border-radius: 2px;
-      height: 100%;
-      padding: 16px 0 16px 0;
-      width: calc(98.66% - 16px);
-      margin: 16px auto;
-      background: white;
-    }
-    /* Breakpoints */
-    /* Small */
-    
-    @media (max-width: 600px) {
-      paper-material {
-        --menu-container-display: none;
-        width: calc(97.33% - 32px);
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-    }
-    /* Tablet+ */
-    
-    @media (min-width: 601px) {
-      paper-material {
-        width: calc(98% - 46px);
-        margin-bottom: 32px;
-        padding-left: 30px;
-        padding-right: 30px;
-      }
-    }
-  </style>
   <template>
-    <firebase-document location="https://oyloo2.firebaseio.com/l/projects" data="{{doc}}"></firebase-document>
-    <firebase-collection location="https://oyloo2.firebaseio.com/l/projects/l" data="{{items}}">
+    <firebase-document location="[[location]]" data="{{doc}}">
+    </firebase-document>
+    <firebase-collection location="[[location]]/l" data="{{lists}}">
     </firebase-collection>
-    <template is="dom-repeat" items="{{items}}">
-      <paper-material elevation="1" itemscope itemtype="http://schema.org/Thing">
-        <p class="paper-font-body2" itemprop="name">{{item.n}}</p>
-      </paper-material>
+    <template is="dom-repeat" items="[[lists]]" as="list">
+      <oyloo-list list="[[list]]" location="[[computeLocation(location,list.__firebaseKey__)]]">
     </template>
-    <oyloo-pretty-json object='[[doc]]'></oyloo-pretty-json>
+    <!--<oyloo-pretty-json object='[[list]]'></oyloo-pretty-json>-->
   </template>
   <script>
     (function() {
@@ -50,6 +18,7 @@
       Polymer({
         is: 'oyloo-demo',
         properties: {
+          location: String,
           title: {
             type: String,
             notify: true,
@@ -62,6 +31,10 @@
             value: 'Oyloo',
             computed: 'valueChanged(doc.n)'
           }
+        },
+        computeLocation: function(loc,key) {
+          var location = loc + '/l/' + key + '/l';
+          return location;
         },
         valueChanged: function(value) {
           return value;

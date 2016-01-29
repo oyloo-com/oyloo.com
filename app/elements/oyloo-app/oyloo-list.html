@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="oyloo-list">
+  <style>
+    paper-card {
+      width: calc(100% - 8px);
+      margin: 4px;
+    }
+    
+    paper-icon-button {
+      float: right;
+    }
+    
+    #list {
+      width: 100%;
+    }
+  </style>
+  <template>
+    <firebase-collection location="[[location]]" data="{{items}}"></firebase-collection>
+    <paper-card heading="[[list.n]]">
+      <div class="card-actions">
+        <paper-icon-button id="button" icon="hardware:keyboard-arrow-up" title="more info"
+        on-tap="_toggle">
+        </paper-icon-button>
+        <iron-collapse id="list">
+          <template is="dom-repeat" items="[[items]]" as="item">
+            <oyloo-item item="[[item]]"></oyloo-item>
+          </template>
+        </iron-collapse>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'oyloo-list',
+        properties: {
+          list: Object,
+          location: {
+            type: String,
+            observer: 'debug'
+          }
+        },
+        debug: function(v) {
+          console.log(v);
+        },
+        _toggle: function() {
+          this.$.button.icon = this.$.list.opened ?
+            'hardware:keyboard-arrow-up' :
+            'hardware:keyboard-arrow-down';
+          this.$.list.toggle();
+        }
+      });
+    })();
+  </script>
+</dom-module>

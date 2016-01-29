@@ -1,0 +1,25 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="oyloo-item">
+  <style>
+   paper-card {
+     width: 100%;
+   }
+  </style>
+  <template>
+    <paper-card heading="[[item.n]]">
+    </paper-card>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'oyloo-item',
+        properties: {
+          item: Object
+        }
+      });
+    })();
+  </script>
+</dom-module>
