@@ -171,6 +171,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Demo</span>
           </a>
 
+          <a data-route="requests" href="{{baseUrl}}requests">
+            <iron-icon icon="info"></iron-icon>
+            <span>Requests</span>
+          </a>
+
           <a data-route="contact" href="{{baseUrl}}contact">
             <iron-icon icon="mail"></iron-icon>
             <span>Contact</span>
@@ -184,6 +189,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <oyloo-default-header data-route="home">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
           <oyloo-landing-page></oyloo-landing-page>
+        </oyloo-default-header>
+
+        <oyloo-default-header data-route="requests">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <oyloo-some-wishes></oyloo-some-wishes>
         </oyloo-default-header>
 
         <oyloo-default-header data-route="demo" title="[[title]]" name="{{name}}" on-name-changed="updateTitle">
