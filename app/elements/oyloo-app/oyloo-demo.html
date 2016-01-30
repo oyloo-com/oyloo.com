@@ -2,12 +2,10 @@
 
 <dom-module id="oyloo-demo">
   <template>
-    <firebase-document location="[[location]]" data="{{doc}}">
-    </firebase-document>
-    <firebase-collection location="[[location]]/l" data="{{lists}}">
-    </firebase-collection>
+    <firebase-document location="[[_documentLocation]]" data="{{doc}}"></firebase-document>
+    <firebase-collection location="[[_computeLocation(_documentLocation, 'l')]]" data="{{lists}}"></firebase-collection>
     <template is="dom-repeat" items="[[lists]]" as="list">
-      <oyloo-list list="[[list]]" location="[[computeLocation(location,list.__firebaseKey__)]]">
+      <oyloo-list base="[[base]]" path="[[list.__firebaseKey__]]">
     </template>
     <!--<oyloo-pretty-json object='[[list]]'></oyloo-pretty-json>-->
   </template>
@@ -18,25 +16,31 @@
       Polymer({
         is: 'oyloo-demo',
         properties: {
-          location: String,
+          base: String,
+          path: String,
+          _documentLocation: {
+            type: String,
+            computed: '_computeLocation(base, path)'
+          },
           title: {
             type: String,
             notify: true,
             value: 'Leanest Startup',
-            computed: 'valueChanged(doc.t)'
+            computed: '_valueChanged(doc.t)'
           },
           name: {
             type: String,
             notify: true,
             value: 'Oyloo',
-            computed: 'valueChanged(doc.n)'
+            computed: '_valueChanged(doc.n)'
           }
         },
-        computeLocation: function(loc,key) {
-          var location = loc + '/l/' + key + '/l';
-          return location;
+        _computeLocation: function(base, path) {
+          if (base && path) {
+            return base + '/' + path;
+          }
         },
-        valueChanged: function(value) {
+        _valueChanged: function(value) {
           return value;
         }
       });

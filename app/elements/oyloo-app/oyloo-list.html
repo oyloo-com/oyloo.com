@@ -16,8 +16,9 @@
     }
   </style>
   <template>
-    <firebase-collection location="[[location]]" data="{{items}}"></firebase-collection>
-    <paper-card heading="[[list.n]]">
+    <firebase-document location="[[_documentLocation]]" data="{{doc}}"></firebase-document>
+    <firebase-collection location="[[_computeLocation(_documentLocation, 'l')]]" data="{{items}}"></firebase-collection>
+    <paper-card heading="[[doc.n]]">
       <div class="card-actions">
         <paper-icon-button id="button" icon="hardware:keyboard-arrow-up" title="more info"
         on-tap="_toggle">
@@ -37,13 +38,14 @@
       Polymer({
         is: 'oyloo-list',
         properties: {
-          list: Object,
-          location: {
+          base: String,
+          path: String,
+          _documentLocation: {
             type: String,
-            observer: 'debug'
+            computed: '_computeLocation(base, path)'
           }
         },
-        debug: function(v) {
+        _debug: function(v) {
           console.log(v);
         },
         _toggle: function() {
@@ -51,6 +53,11 @@
             'hardware:keyboard-arrow-up' :
             'hardware:keyboard-arrow-down';
           this.$.list.toggle();
+        },
+        _computeLocation: function(base, path) {
+          if (base && path) {
+            return base + '/' + path;
+          }
         }
       });
     })();
