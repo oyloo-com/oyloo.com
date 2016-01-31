@@ -32,7 +32,7 @@ then
     cp docs/firebase.json firebase.json
     # Starting Build Process for Firebase Changes
     gulp
-    # Starting Deploy Process to Firebaseapp.com Server -- polymer-starter-kit.firebaseapp.com
+    # Starting Deploy Process to Firebaseapp.com Server -- oyloo.com
     firebase deploy --token "$FIREBASE_TOKEN" -m "Auto Deployed by Travis CI"
     # Undoing Changes to PSK for Firebase
     cp app/index.html.tmp app/index.html
