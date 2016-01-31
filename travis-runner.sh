@@ -3,7 +3,7 @@ set -o pipefail
 
 if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]  && [ "$TRAVIS_NODE_VERSION" = "5.1" ]
 then
-  git config --global user.email "samccone@gmail.com"
+  git config --global user.email "ed.il@live.com"
   git config --global user.name "auto deployer"
 
   # Stamp index.html with the date and time of PSK's deploying
@@ -24,7 +24,7 @@ then
   }
 
   deploy_firebase () {
-    # Deploying to Firebase! (https://polymer-starter-kit.firebaseapp.com)
+    # Deploying to Firebase! (https://oyloo.com)
     echo Deploying to Firebase
     # Making Changes to PSK for Firebase
     sed -i.tmp 's/<!-- Chrome for Android theme color -->/<base href="\/">\'$'\n<!-- Chrome for Android theme color -->/g' app/index.html
@@ -42,7 +42,7 @@ then
     rm firebase.json
   }
 
-  deploy_ghpages
+  #deploy_ghpages
   deploy_firebase
 
   # Revert to orginal index.html and delete temp file
