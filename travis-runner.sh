@@ -33,7 +33,6 @@ then
     # Starting Build Process for Firebase Changes
     gulp
     # Starting Deploy Process to Firebaseapp.com Server -- oyloo.com
-    echo $FIREBASE_TOKEN
     firebase deploy --token "$FIREBASE_TOKEN" -m "Auto Deployed by Travis CI"
     # Undoing Changes to PSK for Firebase
     cp app/index.html.tmp app/index.html
