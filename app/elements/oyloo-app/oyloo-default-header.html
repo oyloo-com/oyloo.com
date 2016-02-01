@@ -1,13 +1,17 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="oyloo-default-header">
-  <style>
-      .space {
+  <style is="custom-style">
+    .space {
       @apply(--layout-flex);
     }
     
     paper-scroll-header-panel {
       height: 100%;
+    }
+    
+    #mainToolbar {
+      color: #fff;
     }
     
     #mainToolbar.tall .app-name {
@@ -46,21 +50,22 @@
     .content {
       height: 900px;
     }
-    
     /* Breakpoints */
-      /* Small */
-      @media (max-width: 600px) {
-        #mainToolbar.tall .app-name {
-          font-size: 24px;
-          font-weight: 400;
-        }
+    /* Small */
+    
+    @media (max-width: 600px) {
+      #mainToolbar.tall .app-name {
+        font-size: 24px;
+        font-weight: 400;
       }
-      /* Tablet+ */
-      @media (min-width: 601px) {
-        .page {
-          padding: 48px 62px;
-        }
+    }
+    /* Tablet+ */
+    
+    @media (min-width: 601px) {
+      .page {
+        padding: 48px 62px;
       }
+    }
   </style>
   <template>
     <paper-scroll-header-panel id="headerPanelMain" condenses keep-condensed-header on-paper-header-transform="transformHeader">
