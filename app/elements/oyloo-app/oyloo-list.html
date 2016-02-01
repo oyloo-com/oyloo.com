@@ -28,10 +28,10 @@
     <firebase-collection location="[[_computeLocation(_documentLocation, 'l')]]" data="{{items}}"></firebase-collection>
     <paper-card heading="[[doc.n]]">
       <div class="card-actions">
-        <paper-icon-button id="button" icon="hardware:keyboard-arrow-up" title="more info"
+        <paper-icon-button id="button" icon="hardware:keyboard-arrow-down" title="more info"
         on-tap="_toggle">
         </paper-icon-button>
-        <iron-collapse id="list">
+        <iron-collapse id="list" opened>
           <template is="dom-repeat" items="[[items]]" as="item">
             <oyloo-item base="[[base]]" path="[[item.__firebaseKey__]]"></oyloo-item>
           </template>
