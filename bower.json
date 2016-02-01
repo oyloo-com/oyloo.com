@@ -1,5 +1,5 @@
 {
-  "name": "oyloo-wishes",
+  "name": "oyloo",
   "private": true,
   "dependencies": {
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
@@ -8,9 +8,7 @@
     "paper-elements": "PolymerElements/paper-elements#^1.0.1",
     "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "polymer": "Polymer/polymer#^1.2.0",
-    "firebase-element": "GoogleWebComponents/firebase-element#~1.0.7",
-    "google-signin": "GoogleWebComponents/google-signin#~1.2.0",
-    "paper-button": "PolymerElements/paper-button#~1.0.8"
+    "firebase-element": "GoogleWebComponents/firebase-element#^1.0.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

@@ -1,0 +1,21 @@
+<script>
+  var Oyloo = Oyloo || {};
+  Oyloo.DocumentBehavior = {
+    properties: {
+      base: String,
+      path: String,
+      _documentLocation: {
+        type: String,
+        computed: '_computeLocation(base, path)'
+      }
+    },
+    created: function() {
+      console.log('doc behavior created')
+    },
+    _computeLocation: function(base, path) {
+      if (base && path) {
+        return base + '/' + path;
+      }
+    }
+  };
+</script>

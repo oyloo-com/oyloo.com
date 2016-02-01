@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="oyloo-document-behavior.html">
 
 <dom-module id="oyloo-item">
   <style>
@@ -8,7 +9,8 @@
    }
   </style>
   <template>
-    <paper-card heading="[[item.n]]">
+    <firebase-document location="[[_documentLocation]]" data="{{doc}}"></firebase-document>
+    <paper-card heading="[[doc.n]]">
     </paper-card>
   </template>
   <script>
@@ -17,9 +19,7 @@
 
       Polymer({
         is: 'oyloo-item',
-        properties: {
-          item: Object
-        }
+        behaviors: [Oyloo.DocumentBehavior],
       });
     })();
   </script>

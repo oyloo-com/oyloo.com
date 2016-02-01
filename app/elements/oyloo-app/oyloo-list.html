@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="oyloo-document-behavior.html">
 <link rel="import" href="oyloo-item.html">
 
 <dom-module id="oyloo-list">
@@ -32,7 +33,7 @@
         </paper-icon-button>
         <iron-collapse id="list">
           <template is="dom-repeat" items="[[items]]" as="item">
-            <oyloo-item item="[[item]]"></oyloo-item>
+            <oyloo-item base="[[base]]" path="[[item.__firebaseKey__]]"></oyloo-item>
           </template>
         </iron-collapse>
       </div>
@@ -44,27 +45,12 @@
 
       Polymer({
         is: 'oyloo-list',
-        properties: {
-          base: String,
-          path: String,
-          _documentLocation: {
-            type: String,
-            computed: '_computeLocation(base, path)'
-          }
-        },
-        _debug: function(v) {
-          console.log(v);
-        },
+        behaviors: [Oyloo.DocumentBehavior],
         _toggle: function() {
           this.$.button.icon = this.$.list.opened ?
             'hardware:keyboard-arrow-up' :
             'hardware:keyboard-arrow-down';
           this.$.list.toggle();
-        },
-        _computeLocation: function(base, path) {
-          if (base && path) {
-            return base + '/' + path;
-          }
         }
       });
     })();

@@ -1,14 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+<link rel="import" href="oyloo-document-behavior.html">
 <link rel="import" href="oyloo-list.html">
 
-<dom-module id="oyloo-demo">
+<dom-module id="oyloo-lists">
   <template>
     <firebase-document location="[[_documentLocation]]" data="{{doc}}"></firebase-document>
     <firebase-collection location="[[_computeLocation(_documentLocation, 'l')]]" data="{{lists}}"></firebase-collection>
     <template is="dom-repeat" items="[[lists]]" as="list">
-      <oyloo-list base="[[base]]" path="[[list.__firebaseKey__]]">
+      <oyloo-list base="[[base]]" path="[[list.__firebaseKey__]]"></oyloo-list>
     </template>
     <!--<oyloo-pretty-json object='[[list]]'></oyloo-pretty-json>-->
   </template>
@@ -17,14 +18,9 @@
       'use strict';
 
       Polymer({
-        is: 'oyloo-demo',
+        is: 'oyloo-lists',
+        behaviors: [Oyloo.DocumentBehavior],
         properties: {
-          base: String,
-          path: String,
-          _documentLocation: {
-            type: String,
-            computed: '_computeLocation(base, path)'
-          },
           title: {
             type: String,
             notify: true,
@@ -36,11 +32,6 @@
             notify: true,
             value: 'Oyloo',
             computed: '_valueChanged(doc.n)'
-          }
-        },
-        _computeLocation: function(base, path) {
-          if (base && path) {
-            return base + '/' + path;
           }
         },
         _valueChanged: function(value) {
