@@ -3,43 +3,43 @@
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 
 <dom-module id="oyloo-some-wishes">
-  <style>
-    paper-material {
-      border-radius: 2px;
-      height: 100%;
-      padding: 16px 0 16px 0;
-      width: calc(98.66% - 16px);
-      margin: 16px auto;
-      background: white;
-    }
-    /* Breakpoints */
-    /* Small */
-    
-    @media (max-width: 600px) {
-      paper-material {
-        --menu-container-display: none;
-        width: calc(97.33% - 32px);
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-    }
-    /* Tablet+ */
-    
-    @media (min-width: 601px) {
-      paper-material {
-        width: calc(98% - 46px);
-        margin-bottom: 32px;
-        padding-left: 30px;
-        padding-right: 30px;
-      }
-    }
-  </style>
   <template>
+    <style>
+      paper-material {
+        border-radius: 2px;
+        height: 100%;
+        padding: 16px 0 16px 0;
+        width: calc(98.66% - 16px);
+        margin: 16px auto;
+        background: white;
+      }
+      /* Breakpoints */
+      /* Small */
+      
+      @media (max-width: 600px) {
+        paper-material {
+          --menu-container-display: none;
+          width: calc(97.33% - 32px);
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      }
+      /* Tablet+ */
+      
+      @media (min-width: 601px) {
+        paper-material {
+          width: calc(98% - 46px);
+          margin-bottom: 32px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+    </style>
     <firebase-collection location="https://oyloo2.firebaseio.com/l/-JogzNpZhUFsa461T76H/l/-JogzQLFQDpFm8vZ4Xkn/l"
     data="{{items}}">
     </firebase-collection>
     <template is="dom-repeat" items="{{items}}">
-        <paper-material elevation="1" itemscope itemtype="http://schema.org/Thing">
+      <paper-material elevation="1" itemscope itemtype="http://schema.org/Thing">
         <p class="paper-font-body2" itemprop="name">{{item.n}}</p>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_donations">

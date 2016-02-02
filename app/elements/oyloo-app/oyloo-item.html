@@ -3,23 +3,43 @@
 <link rel="import" href="oyloo-document-behavior.html">
 
 <dom-module id="oyloo-item">
-  <style>
-   paper-card {
-     width: 100%;
-   }
-  </style>
   <template>
+    <style>
+      :host {
+        color: var(--primary-color);
+        --paper-card-header-color: var(--primary-color);
+        width: calc(100% - 8px);
+      }
+      
+      paper-card {
+        width: 100%;
+      }
+    </style>
     <firebase-document location="[[_documentLocation]]" data="{{doc}}"></firebase-document>
-    <paper-card heading="[[doc.n]]">
-    </paper-card>
+    <a href$="/lists/[[path]]">
+      <paper-card heading="[[doc.n]]">
+      </paper-card>
+    </a>
   </template>
   <script>
     (function() {
       'use strict';
-
       Polymer({
         is: 'oyloo-item',
         behaviors: [Oyloo.DocumentBehavior],
+        observers: [
+          '_updateStyles(doc.cs)'
+        ],
+        _computeHref: function(key) {
+          console.log(this.doc);
+          if (key) {
+            return '/list/' + key;
+          }
+        },
+        _updateStyles: function(customStyle) {
+          this.customStyle = customStyle;
+          this.updateStyles();
+        }
       });
     })();
   </script>

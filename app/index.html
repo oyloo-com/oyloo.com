@@ -49,7 +49,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <!-- endbuild -->
-
+  <!--
+  <script>
+    window.Polymer = window.Polymer || {};
+    window.Polymer.dom = 'shadow';
+  </script>
+  -->
   <!-- Because this project uses vulcanize this should be your only html import
        in this file. All other imports should go in elements.html -->
   <link rel="import" href="elements/elements.html">
@@ -184,26 +189,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </paper-scroll-header-panel>
 
       <!-- Main Area -->
-      <iron-pages id="pages" main attr-for-selected="data-route" selected="{{route}}" selected-attribute="selected" on-iron-select="updateTitle">
+      <iron-pages id="pages" main attr-for-selected="data-route" selected="{{route}}" selected-attribute="selected"
+      on-iron-select="updateTitle">
 
         <oyloo-default-header data-route="home">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <paper-icon-button id="paperToggle" icon="oyloo:menu" paper-drawer-toggle></paper-icon-button>
           <oyloo-landing-page></oyloo-landing-page>
         </oyloo-default-header>
 
         <oyloo-default-header data-route="requests">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <paper-icon-button id="paperToggle" icon="oyloo:menu" paper-drawer-toggle></paper-icon-button>
           <oyloo-some-wishes></oyloo-some-wishes>
         </oyloo-default-header>
 
         <oyloo-default-header data-route="lists" title="[[title]]" name="{{name}}" on-name-changed="updateTitle">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-          <oyloo-lists base="https://oyloo2.firebaseio.com/l" path="[[params.key]]" title="{{title}}" name="{{name}}"></oyloo-lists>
+          <paper-icon-button id="paperToggle" icon="oyloo:menu" paper-drawer-toggle></paper-icon-button>
+          <oyloo-lists base="https://oyloo2.firebaseio.com/l" path="[[params.key]]" title="{{title}}"
+          name="{{name}}"></oyloo-lists>
         </oyloo-default-header>
 
         <oyloo-default-header data-route="contact">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-          <oyloo-contact></oyloo-contact>
+          <!-- <paper-icon-button id="paperToggle" icon="oyloo:menu" paper-drawer-toggle></paper-icon-button> -->
+          <!-- <oyloo-contact></oyloo-contact> -->
         </oyloo-default-header>
 
       </iron-pages>

@@ -1,76 +1,78 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="oyloo-icons.html">
 
 <dom-module id="oyloo-default-header">
-  <style is="custom-style">
-    .space {
-      @apply(--layout-flex);
-    }
-    
-    paper-scroll-header-panel {
-      height: 100%;
-    }
-    
-    #mainToolbar {
-      color: #fff;
-    }
-    
-    #mainToolbar.tall .app-name {
-      font-size: 40px;
-      font-weight: 300;
-      /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-      -webkit-transform-origin: left center;
-      transform-origin: left center;
-    }
-    
-    #mainToolbar .middle-container,
-    #mainToolbar .bottom-container {
-      @apply(--layout-horizontal);
-      @apply(--layout-center);
-    }
-    
-    #mainToolbar .middle-container {
-      height: 100%;
-      margin-left: 48px;
-    }
-    
-    #mainToolbar:not(.tall) .middle-container {
-      font-size: 18px;
-      padding-bottom: 0;
-    }
-    
-    #mainToolbar .bottom-container {
-      @apply(--paper-font-subhead);
-      margin-left: 48px;
-      /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-      -webkit-transform-origin: left center;
-      transform-origin: left center;
-    }
-    /* Height of the scroll area */
-    
-    .content {
-      height: 900px;
-    }
-    /* Breakpoints */
-    /* Small */
-    
-    @media (max-width: 600px) {
-      #mainToolbar.tall .app-name {
-        font-size: 24px;
-        font-weight: 400;
-      }
-    }
-    /* Tablet+ */
-    
-    @media (min-width: 601px) {
-      .page {
-        padding: 48px 62px;
-      }
-    }
-  </style>
   <template>
+    <style is="custom-style">
+      .space {
+        @apply(--layout-flex);
+      }
+      
+      paper-scroll-header-panel {
+        height: 100%;
+      }
+      
+      #mainToolbar {
+        color: var(--oyloo-text-color,#fff);
+        --iron-icon-fill-color: red;
+        --iron-icon-stroke-color: blue;
+      }
+      
+      #mainToolbar.tall .app-name {
+        font-size: 40px;
+        font-weight: 300;
+        /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+      }
+      
+      #mainToolbar .middle-container,
+      #mainToolbar .bottom-container {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+      }
+      
+      #mainToolbar .middle-container {
+        height: 100%;
+        margin-left: 48px;
+      }
+      
+      #mainToolbar:not(.tall) .middle-container {
+        font-size: 18px;
+        padding-bottom: 0;
+      }
+      
+      #mainToolbar .bottom-container {
+        @apply(--paper-font-subhead);
+        margin-left: 48px;
+        /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+        -webkit-transform-origin: left center;
+        transform-origin: left center;
+      }
+      /* Height of the scroll area */
+      
+      .content {
+        height: 900px;
+      }
+      /* Breakpoints */
+      /* Small */
+      
+      @media (max-width: 600px) {
+        #mainToolbar.tall .app-name {
+          font-size: 24px;
+          font-weight: 400;
+        }
+      }
+      /* Tablet+ */
+      
+      @media (min-width: 601px) {
+        .page {
+          padding: 48px 62px;
+        }
+      }
+    </style>
     <paper-scroll-header-panel id="headerPanelMain" condenses keep-condensed-header on-paper-header-transform="transformHeader">
       <!-- Main Toolbar -->
       <paper-toolbar id="mainToolbar" class="tall">
@@ -79,7 +81,7 @@
         <span class="space"></span>
 
         <!-- Toolbar icons -->
-        <iron-icon src="../../images/oyloo.svg"></iron-icon>
+        <iron-icon icon="oyloo:oyloo"></iron-icon>
 
         <!-- Application name -->
         <div class="middle middle-container">

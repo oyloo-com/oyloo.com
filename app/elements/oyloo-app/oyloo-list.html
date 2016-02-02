@@ -2,36 +2,42 @@
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
 <link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
-<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="oyloo-document-behavior.html">
 <link rel="import" href="oyloo-item.html">
+<link rel="import" href="oyloo-icons.html">
 
 <dom-module id="oyloo-list">
-  <style>
-    paper-card {
-      width: calc(100% - 8px);
-      margin: 4px;
-    }
-    
-    paper-icon-button {
-      float: right;
-    }
-    
-    #list {
-      width: 100%;
-    }
-  </style>
   <template>
+    <style>
+      :host {
+        color: var(--primary-color);
+        --paper-card-header-color: var(--primary-color);
+        width: calc(100% - 8px);
+      }
+      
+      paper-card {
+        width: calc(100% - 8px);
+        margin: 4px;
+      }
+      
+      paper-icon-button {
+        float: right;
+      }
+      
+      iron-collapse {
+        width: 100%;
+      }
+    </style>
     <firebase-document location="[[_documentLocation]]" data="{{doc}}"></firebase-document>
     <firebase-collection location="[[_computeLocation(_documentLocation, 'l')]]" data="{{items}}"></firebase-collection>
-    <paper-card heading="[[doc.n]]">
+    <paper-card id="card" heading="[[doc.n]]">
       <div class="card-actions">
-        <paper-icon-button id="button" icon="hardware:keyboard-arrow-down" title="more info"
+        <paper-icon-button id="button" icon="oyloo:keyboard-arrow-down" title="more info"
         on-tap="_toggle">
         </paper-icon-button>
-        <iron-collapse id="list" opened>
+        <iron-collapse id="collapse" opened>
           <template is="dom-repeat" items="[[items]]" as="item">
             <oyloo-item base="[[base]]" path="[[item.__firebaseKey__]]"></oyloo-item>
           </template>
@@ -46,11 +52,18 @@
       Polymer({
         is: 'oyloo-list',
         behaviors: [Oyloo.DocumentBehavior],
+        observers: [
+          '_updateStyles(doc.cs)'
+        ],
         _toggle: function() {
-          this.$.button.icon = this.$.list.opened ?
-            'hardware:keyboard-arrow-up' :
-            'hardware:keyboard-arrow-down';
-          this.$.list.toggle();
+          this.$.button.icon = this.$.collapse.opened ?
+            'oyloo:keyboard-arrow-up' :
+            'oyloo:keyboard-arrow-down';
+          this.$.collapse.toggle();
+        },
+        _updateStyles: function(customStyle) {
+          this.customStyle = customStyle;
+          this.updateStyles();
         }
       });
     })();
