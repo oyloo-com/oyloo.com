@@ -56,4 +56,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
+  app.forceNarrow = function(route) {
+    return route === 'home';
+  };
+
 })(document);

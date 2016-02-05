@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="oyloo-sign-up">
+  <template>
+    <style>
+      :host {
+        color: var(--primary-color);
+        --paper-card-header-color: var(--primary-color);
+        width: calc(100% - 8px);
+      }
+      
+      paper-card {
+        width: 100%;
+      }
+    </style>
+    <firebase-document location="[[_documentLocation]]" data="{{doc}}"></firebase-document>
+    <a href$="/lists/[[path]]">
+      <paper-card heading="[[doc.n]]">
+      </paper-card>
+    </a>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+      Polymer({
+        is: 'oyloo-sign-up',
+        behaviors: [Oyloo.DocumentBehavior],
+        observers: [
+          '_updateStyles(doc.cs)'
+        ],
+        _computeHref: function(key) {
+          console.log(this.doc);
+          if (key) {
+            return '/list/' + key;
+          }
+        },
+        _updateStyles: function(customStyle) {
+          this.customStyle = customStyle;
+          this.updateStyles();
+        }
+      });
+    })();
+  </script>
+</dom-module>

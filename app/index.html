@@ -155,7 +155,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <span id="browser-sync-binding"></span>
   <template is="dom-bind" id="app">
 
-    <paper-drawer-panel id="paperDrawerPanel">
+    <paper-drawer-panel id="paperDrawerPanel" force-narrow="[[forceNarrow(route)]]">
       <!-- Drawer Scroll Header Panel -->
       <paper-scroll-header-panel drawer fixed>
 
@@ -172,7 +172,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </a>
 
           <a data-route="demo" href="{{baseUrl}}lists/demo">
-            <iron-icon icon="oyloo:list"></iron-icon>
+            <iron-icon icon="oyloo:screen-share"></iron-icon>
             <span>Demo</span>
           </a>
 
@@ -180,6 +180,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <iron-icon icon="oyloo:contacts"></iron-icon>
             <span>Contact</span>
           </a>
+
+          <a data-route="about" href="{{baseUrl}}about">
+            <iron-icon icon="oyloo:info"></iron-icon>
+            <span>About</span>
+          </a>
+
         </paper-menu>
       </paper-scroll-header-panel>
 
@@ -187,14 +193,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <iron-pages id="pages" main attr-for-selected="data-route" selected="{{route}}" selected-attribute="selected"
       on-iron-select="updateTitle">
 
-        <oyloo-default-header data-route="home">
+        <oyloo-landing-page data-route="home">
           <paper-icon-button id="paperToggle" icon="oyloo:menu" paper-drawer-toggle></paper-icon-button>
-          <oyloo-landing-page></oyloo-landing-page>
-        </oyloo-default-header>
+        </oyloo-landing-page>
 
-        <oyloo-default-header data-route="requests">
+        <oyloo-default-header data-route="about">
           <paper-icon-button id="paperToggle" icon="oyloo:menu" paper-drawer-toggle></paper-icon-button>
-          <oyloo-some-wishes></oyloo-some-wishes>
+          <oyloo-about></oyloo-about>
         </oyloo-default-header>
 
         <oyloo-default-header data-route="lists" title="[[title]]" name="{{name}}" on-name-changed="updateTitle">

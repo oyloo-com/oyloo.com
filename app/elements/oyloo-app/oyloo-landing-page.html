@@ -1,80 +1,110 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/gold-email-input/gold-email-input.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 
 <dom-module id="oyloo-landing-page">
-  <template>
-    <style is="custom-style">
-      paper-material {
-        @apply(--paper-font-body2);
+<template>
+  <style>
+    :host {
+      display: block;
+      height: 100%;
+      background: url("../../images/oyloo-wp.jpg") center/cover no-repeat;
+      color: white;
+      --primary-text-color: white;
+      --secondary-text-color: white;
+      --paper-input-container-invalid-color: var(--light-accent-color);
+    }
+
+    iron-pages {
+      @apply(--layout-vertical);
+      @apply(--layout-center-justified);
+      @apply(--layout-center);
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .bottom-margin {
+      margin-bottom: 1vh;
+    }
+
+    iron-icon {
+      --iron-icon-height: 20vmin;
+      --iron-icon-width: 20vmin;
+    }
+
+    h1 {
+      color: var(--accent-color);
+      font-size: 5vw;
+    }
+
+    h2 {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 4vw;
+    }
+
+    #subscribe {
+      @apply(--layout-horizontal);
+      @apply(--layout-center-justified);
+      @apply(--layout-center);
+      text-align: initial;
+    }
+
+    paper-button {
+      background: var(--accent-color);
+    }
+
+    @media (max-width: 480px) {
+      iron-pages {
+        padding: 64px 0px;
       }
-      
-      paper-material .subhead {
-        @apply(--paper-font-subhead);
+    }
+
+    @media (min-width: 481px) {
+      iron-pages {
+        padding: 64px;
       }
-      
-      paper-material {
-        border-radius: 2px;
-        height: 100%;
-        padding: 16px 0 16px 0;
-        width: calc(98.66% - 16px);
-        margin: 16px auto;
-        background: white;
-      }
-      /* Breakpoints */
-      /* Small */
-      
-      @media (max-width: 600px) {
-        paper-material {
-          --menu-container-display: none;
-          width: calc(97.33% - 32px);
-          padding-left: 16px;
-          padding-right: 16px;
+    }
+  </style>
+  <content></content>
+  <iron-pages id="page" selected="0">
+    <form is="iron-form" id="form" action="//oyloo.us12.list-manage.com/subscribe/post?u=c10f42ad62f36f61965798b77&amp;id=d35850a9f8"
+    method="post" name="mc-embedded-subscribe-form" target="_blank" on-iron-form-submit="_confirm">
+      <iron-icon icon="oyloo:oyloo"></iron-icon>
+      <h1 class="bottom-margin">Crowd decides what to implement next</h1>
+      <h2 class="bottom-margin">Want closed beta invite?</h2>
+      <div id="subscribe">
+        <gold-email-input required auto-validate error-message="please enter a valid email"
+        label="your email address" value="" name="EMAIL" on-keypress="_keyPressed"></gold-email-input>
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="b_c10f42ad62f36f61965798b77_d35850a9f8" tabindex="-1" value="">
+        </div>
+        <paper-button name="subscribe" raised on-tap="_submitForm">Subscribe</paper-button>
+      </div>
+    </form>
+    <h2>Check your maibox for confirmation email and click on "Yes, subscribe me to this list.", please.</h2>
+  </iron-pages>
+</template>
+<script>
+  (function() {
+    'use strict';
+    Polymer({
+      is: 'oyloo-landing-page',
+      _submitForm: function() {
+        this.$.form.submit();
+      },
+      _keyPressed: function(e) {
+        if (e.keyIdentifier === 'Enter') {
+          this._submitForm(e);
         }
+      },
+      _confirm: function() {
+        this.$.page.selected = 1;
       }
-      /* Tablet+ */
-      
-      @media (min-width: 601px) {
-        paper-material {
-          width: calc(98% - 46px);
-          margin-bottom: 32px;
-          padding-left: 30px;
-          padding-right: 30px;
-        }
-      }
-      
-      img {
-        float: left;
-        margin: 16px 16px 16px 0px;
-        border-radius: 50%;
-      }
-    </style>
-    <paper-material elevation="1">
-      <a href="{{baseUrl}}contact"><img src="../../images/ed-family.jpg" width="92" height="92"></a>
-      <p>Hi, my name is <b>Ed Ilyin</b>. I'm 37 and father of 9, 2 and 1 years old boys.</p>
-      <p>Do you want to make a <b>startup</b> but have <b>no spare money and time</b>        like me?</p>
-      <p>Let's build best services in the world and <b>earn money</b> all together.</p>
-    </paper-material>
-    <paper-material elevation="1">
-      <h2 class="page-title">How?</h2>
-      <ol>
-        <li>You donate <b>1 cent</b> as a vote for your prefered request.
-          (Send new requests to <a href="mailto:request@oyloo.com">request@oyloo.com</a>.)</li>
-        <br>
-        <li><b>I will make the requested changes</b> starting from the <b>most voted</b>.
-          (PR's (pull requests) on <a href="https://github.com/Oyloo/oyloo">GitHub</a>          are welcome.)
-        </li>
-        <br>
-        <li>As a result <b>you become co-owner</b> of a service and any <b>profit will be shared with you</b>          proportionally to the amount of your donations.
-        </li>
-      </ol>
-    </paper-material>
-  </template>
-  <script>
-    (function() {
-      'use strict';
-      Polymer({
-        is: 'oyloo-landing-page',
-      });
-    })();
-  </script>
+    });
+  })();
+</script>
 </dom-module>
