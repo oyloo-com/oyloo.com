@@ -1,20 +1,4 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/gold-email-input/gold-email-input.html">
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/iron-form/iron-form.html">
-<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
-
-<dom-module id="oyloo-landing-page">
-<template>
-  <style>
-    :host {
-      display: block;
-      height: 100%;
-      background: url("../../images/oyloo-wp.jpg") center/cover no-repeat;
-      color: white;
-      --primary-text-color: white;
+xt-color: white;
       --secondary-text-color: white;
       --paper-input-container-invalid-color: var(--light-accent-color);
     }
@@ -42,8 +26,8 @@
     }
 
     h2 {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 4vw;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 2vw;
     }
 
     #subscribe {
@@ -75,7 +59,7 @@
     method="post" name="mc-embedded-subscribe-form" target="_blank" on-iron-form-submit="_confirm">
       <iron-icon icon="oyloo:oyloo"></iron-icon>
       <h1 class="bottom-margin">Crowd decides what to implement next</h1>
-      <h2 class="bottom-margin">Want closed beta invite?</h2>
+      <h2 class="bottom-margin">Private beta accessible by invitation only</h2>
       <div id="subscribe">
         <gold-email-input required auto-validate error-message="please enter a valid email"
         label="your email address" value="" name="EMAIL" on-keypress="_keyPressed"></gold-email-input>
