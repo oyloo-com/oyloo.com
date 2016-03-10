@@ -37,6 +37,7 @@ The Oylee requires the following major dependencies:
 - npm, the node package manager, installed with Node.js and used to install Node.js packages.
 - gulp, a Node.js-based build tool.
 - bower, a Node.js-based package manager used to install front-end packages (like Polymer).
+- The starter kit gulp build process uses platform specific tools which is handled by node-gyp which is included in node.js. See https://github.com/nodejs/node-gyp/blob/master/README.md for additional platform specific dependencies.
 
 **To install dependencies:**
 
@@ -178,7 +179,7 @@ In order to guarantee that the latest version of your Service Worker script is b
 * Hit shift-reload to bypass the service worker as to ensure that the remaining tab isn't under the control of a service worker
 * Hit reload to let the newer version of the Service Worker control the page.
 
-If you find anything to still be stale, you can also try navigating to `chrome:serviceworker-internals` (in Chrome), finding the relevant Service Worker entry for your application and clicking 'Unregister' before refreshing your app. This will (of course) only clear it from the local development machine. If you have already deployed to production then further work will be necessary to remove it from your user's machines.
+If you find anything to still be stale, you can also try navigating to `chrome:serviceworker-internals` (in Chrome), finding the relevant Service Worker entry for your application and clicking 'Unregister' before refreshing your app. This will (of course) only clear it from the local development machine. If you have already deployed to production then further work will be necessary to remove it from your users' machines.
 
 #### Disable Service Worker support after you enabled it
 
